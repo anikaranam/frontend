@@ -1,0 +1,49 @@
+div.main {
+  background-color: #17408B;
+  height: 100%;
+  width: 100%;
+  position:absolute;
+  top:0;
+  left: 0;
+}
+
+.title {
+  text-align: center;
+  font-size: 120px;
+  color: #E3B433;
+  float: center;
+  margin: 0 auto;
+  width:100%;
+  display: block;
+}
+
+.line {
+  background-color: white;
+}
+
+.insertLabel {
+  color: #E3B433;
+  margin: 25px;
+}
+
+input {
+  margin-left: 25px;
+  margin-right: 25px;
+  height: 25px;
+  font-size: 12px;
+  text-align: center;
+  border-radius:7px;
+}
+
+div.insertDiv, .readDiv, .updateDiv, .deleteDiv {
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+button {
+  margin-left: 25px;
+  height: 25px;
+  font-size: 12px;
+  text-align: center;
+  border-radius:7px;
+}
