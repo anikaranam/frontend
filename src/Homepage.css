@@ -1,49 +1,36 @@
-div.main {
-  background-color: #17408B;
-  height: 100%;
-  width: 100%;
-  position:absolute;
-  top:0;
-  left: 0;
-}
-
 .title {
   text-align: center;
-  font-size: 120px;
+  font-size: 180px;
   color: #E3B433;
   float: center;
   margin: 0 auto;
   width:100%;
   display: block;
-}
-
-.line {
-  background-color: white;
-}
-
-.insertLabel {
-  color: #E3B433;
-  margin: 25px;
-}
-
-input {
-  margin-left: 25px;
-  margin-right: 25px;
-  height: 25px;
-  font-size: 12px;
-  text-align: center;
-  border-radius:7px;
-}
-
-div.insertDiv, .readDiv, .updateDiv, .deleteDiv {
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 145px;
 }
 
 button {
-  margin-left: 25px;
-  height: 25px;
-  font-size: 12px;
-  text-align: center;
-  border-radius:7px;
+	margin-top: 25px;
+	margin-left: 35px;
+	margin-right: 35px;
+	color: #E3B433;
+	background-color: #17408B;
+	font-size: 15px;
+	size: 40px;
+	border-color:orange;
+}
+
+.description {
+	font-size: 30px;
+	margin: 0 auto;
+	text-align: center;
+	color:#E3B433;
+}
+
+.buttons {
+	margin-top: 40px;
+	text-align: center;
+	display: inline-block;
+	border-color: yellow;
+	margin-left: 120px;
 }
