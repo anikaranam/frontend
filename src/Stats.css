@@ -30,7 +30,7 @@ button {
 }
 
 .player {
-	background-color: #17408;
+	background-color: #17408B;
 	float: right;
 	width: 50%;
 	height: 100%;
@@ -64,3 +64,53 @@ select {
 	text-align: center;
 	margin-top: 50px;
 }
+
+.visualize {
+	margin-top: 40px;
+	background-color: #E3B433;
+	font-size: 30px;
+	color: #17408B;
+	border-radius: 7px;
+	font-style: all;
+}
+
+#chosenTeam {
+	margin-top: 50px;
+}
+
+#chosenPlayer {
+	margin-top: 50px;
+}
+
+#chosenTeamStat {
+	margin-top: 30px;
+}
+
+#chosenPlayerStat {
+	margin-top: 30px;
+}
+
+.teamsList {
+	margin-top: 30px;
+	height: 90px;
+	overflow-y: auto;
+	text-align: left;
+	margin-left: 50px;
+	border: 1px solid white;
+	padding-left: 10px;
+}
+
+.playersList {
+	margin-top: 30px;
+	height: 90px;
+	overflow-y: auto;
+	text-align: left;
+	margin-left: 50px;
+	border: 1px solid white;
+	padding-left: 10px;
+	width: 550px;
+}
+
+
+
+

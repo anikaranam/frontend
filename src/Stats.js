@@ -4,97 +4,131 @@ import './Stats.css';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 class Stats extends React.Component {
 	
-	/*handleInsertClick() {
-
-		let cName = document.getElementById('insName').value;
-		let cSeasons = document.getElementById('insAct').value;
-		let cWins = document.getElementById('insWins').value;
-		let cLoss = document.getElementById('insLoss').value;
-		let wPercent = (parseInt(cWins)) / (parseInt(cLoss) + parseInt(cWins));
-		const requestOptions = {
-	        method: 'POST',
-	        headers: { 'Content-Type': 'application/json' },
-	        body: JSON.stringify({CoachName: cName, SeasonsActive: cSeasons, CareerWins: cWins, CareerLosses: cLoss,
-	        	WInPercentage: wPercent})
-	    };
-		fetch('http://localhost:3001/addCoachRecord', requestOptions)
-			.then(response => response.json())
-			.then(data => {
-				alert('Coach ' + cName + "'s details have been inserted into the database!");
-			})
-			.catch(error => {
-	            alert('Coach already exists in the database!');
-	        });
-	}*/
 	constructor() {
 		super();
-		var teams = ["Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "LAC"];
-		//var t = document.getElementById("hi").innerHTML;
-		//t.options = teams;
-
+		this.state = {teams: [], players: [], currentTeams: [], currentPlayers: [], chosenTeamStat: "", chosenPlayerStat: ""};
+		this.teamAdd = this.teamAdd.bind(this);
+		this.playerAdd = this.playerAdd.bind(this);
+		this.teamStatAdd = this.teamStatAdd.bind(this);
+		this.playerStatAdd = this.playerStatAdd.bind(this);
 	}
 
-	/*componentDidMount() {
-		const requestOptions = {
-	        method: 'POST',
-	        headers: { 'Content-Type': 'application/json' }
-	    };
+	componentDidMount() {
 
-
-		var teams = [];
-		fetch('http://localhost:3001/teams', requestOptions)
+		var teamsArr = [];
+		fetch('http://localhost:3001/teams')
 			.then(response => response.json())
 			.then(data => {
-				teams = data;
+				var teamsArr = [];
+				for (let i = 0; i < data.length; i++) {
+					teamsArr.push(data[i].TeamName);
+				}
+				this.setState({teams: teamsArr});
 			})
 			.catch(error => {
-	            alert('Error!');
+	            alert(error);
 	        });
 
-		var selectTeam = document.getElementById("teams"); 
 
-		for(var i = 0; i < teams.length; i++) {
-		    var opt = teams[i];
-
-		    var el = document.createElement("option");
-		    el.text = opt;
-		    el.value = opt;
-
-		    selectTeam.add(el);
-		}
-
-
-
-		var players = [];
-		fetch('http://localhost:3001/players', requestOptions)
-			.then(response => response.json())
-			.then(data => {
-				players = data;
-			})
-			.catch(error => {
-	            alert('Error!');
-	        });
-
-		var selectPlayer = document.getElementById("players"); 
-
-		for(var i = 0; i < teams.length; i++) {
-		    var opt = teams[i];
-
-		    var el = document.createElement("option");
-		    el.text = opt;
-		    el.value = opt;
-
-		    selectPlayer.add(el);
-		}
-	}*/
-
-	_onSelect() {
 		
+		fetch('http://localhost:3001/players')
+			.then(response => response.json())
+			.then(data => {
+				var playersArr = [];
+				for (let i = 0; i < data.length; i++) {
+					playersArr.push(data[i].PlayerName);
+				}
+				this.setState({players: playersArr});
+			})
+			.catch(error => {
+	            alert(error);
+	        });
+
+
 	}
+
+	teamAdd(evt) {
+		let addedTeams = this.state.currentTeams;
+		if (addedTeams.length == 10) {
+			alert("10 teams have already been added");
+		}
+		if (addedTeams.length < 10 && !addedTeams.includes(evt.target.value)) {
+			addedTeams.push(evt.target.value);
+		}
+		this.setState({currentTeams: addedTeams});
+		this.forceUpdate();
+	}
+
+	playerAdd(evt) {
+		let addedPlayers = this.state.currentPlayers;
+		if (addedPlayers.length == 10) {
+			alert("10 players have already been added");
+		}
+		if (addedPlayers.length < 10 && !addedPlayers.includes(evt.target.value)) {
+			addedPlayers.push(evt.target.value);
+		}
+		this.setState({currentPlayers: addedPlayers});
+		this.forceUpdate();
+	}
+
+	teamStatAdd(evt) {
+		this.setState({chosenTeamStat: evt.target.value});
+		this.forceUpdate();
+	}
+
+	playerStatAdd(evt) {
+		this.setState({chosenPlayerStat: evt.target.value});
+		this.forceUpdate();
+	}
+
 
 	render() {
+
+		let teamsArr = this.state.teams;
+        let teamsOptions = teamsArr.map((team) =>
+                <option key={team}>{team}</option>
+ 		);
+
+        let playersArr = this.state.players;
+        let playersOptions = playersArr.map((player) =>
+                <option key={player}>{player}</option>
+            );
+
+        let teamStats = ["Number of Wins", "Number of Losses", "Points Per Game", 
+        "Assists Per Game", "Rebounds Per Game", "Number of home wins", "Number of away wins", "Number of players from a state",
+         "Number of players from a college"];
+
+        let playerStats = ["Points Per Game", "Assists Per Game", "Rebounds Per Game", 
+        "Blocks per game", "Steals per game", "Number of games played", "Home state", "College", "Percentage of team’s points"];
+
+        let teamsStatsOptions = teamStats.map((team) =>
+                <option key={team}>{team}</option>
+ 		);
+
+ 		let playersStatsOptions = playerStats.map((player) =>
+                <option key={player}>{player}</option>
+        );
+
+        let chosenTeamsList = this.state.currentTeams.map((team) => 
+        	<label>{team}, </label>
+        );
+
+        let chosenPlayersList = this.state.currentPlayers.map((player) => 
+        	<label>{player}, </label>
+        );
+
+        let teamStatChosen = <label>{this.state.chosenTeamStat}</label>;
+        let playerStatChosen = <label>{this.state.chosenPlayerStat}</label>;
+
 		return (
 			    <div className="main">
 			      <div className="description">
@@ -103,16 +137,74 @@ class Stats extends React.Component {
 			      			<label>Team</label>
 			      		</div>
 			      		<label className="sectionTitles">Add upto 10 teams to compare</label>
-			      		<select id="teams">
+			      		<select id="teams" onChange={this.teamAdd}>
+			      			{teamsOptions}
 			      		</select>
+
+			      		<div>
+				      		<label className="sectionTitles">Pick a stat to compare</label>
+				      		<select id="teams" onChange={this.teamStatAdd}>
+				      			{teamsStatsOptions}
+				      		</select>
+			      		</div>
+
+			      		<div id = "chosenTeam">
+			      			<label>Teams chosen - </label>
+			      		</div>
+
+			      		<div className="teamsList">
+			      			{chosenTeamsList}
+			      		</div>
+
+			      		<div id = "chosenTeamStat">
+			      			<label>Stat chosen - </label>
+			      		</div>
+
+			      		<div className="teamStatList">
+			      			<label>{teamStatChosen}</label>
+			      		</div>
+
+			      		<div>
+			      			<button className="visualize">Visualize!</button>
+			      		</div>
+
 			      	</div>
 			      	<div className="player">
 			      		<div id="hi" className="sectionHeader">
 			      			<label>Player</label>
 			      		</div>
 			      		<label className="sectionTitles">Add upto 10 players to compare</label>
-			      		<select id="players">
+			      		<select id="players" onChange={this.playerAdd}>
+			      			{playersOptions}
 			      		</select>
+
+			      		<div>
+				      		<label className="sectionTitles">Pick a stat to compare</label>
+				      		<select id="players" onChange={this.playerStatAdd}>
+				      			{playersStatsOptions}
+				      		</select>
+			      		</div>
+
+			      		<div id = "chosenPlayer">
+			      			<label>Players chosen - </label>
+			      		</div>
+
+			      		<div className="playersList">
+			      			{chosenPlayersList}
+			      		</div>
+
+			      		<div id = "chosenPlayerStat">
+			      			<label>Stat chosen - </label>
+			      		</div>
+
+			      		<div className="playerStatList">
+			      			<label>{playerStatChosen}</label>
+			      		</div>
+
+			      		<div>
+			      			<button className="visualize">Visualize!</button>
+			      		</div>
+
 			      	</div>
 			      </div>
 			    </div>

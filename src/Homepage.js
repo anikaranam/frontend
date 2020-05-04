@@ -45,13 +45,13 @@ class Homepage extends React.Component {
 			      <label className="title">NBAVISION</label>
 			      <div className="description">
 			      	<label>Data visualization tool for the 2018/19 NBA Season</label>
-			      </div>
-			      <div className="buttons">
+			      	<div className="buttons">
 				      <Link to="/stats"><button>Compare stats for players or teams</button></Link>
 				      <Link to="/draft"><button>All Star Draft</button></Link>
 				      <Link to="/demo"><button>Demo of CRUD operations</button></Link>
 				      <Link to="/query"><button>Some interesting queries</button></Link>
 				   </div>
+			      </div>      
 			    </div>
 
 			    <Switch>
