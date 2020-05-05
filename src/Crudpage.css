@@ -10,7 +10,7 @@ div.main {
 .title {
   text-align: center;
   font-size: 120px;
-  color: #E3B433;
+  color: orange;
   float: center;
   margin: 0 auto;
   width:100%;
@@ -22,7 +22,7 @@ div.main {
 }
 
 .insertLabel {
-  color: #E3B433;
+  color: orange;
   margin: 25px;
 }
 

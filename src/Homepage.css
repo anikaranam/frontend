@@ -1,7 +1,7 @@
 .title {
   text-align: center;
   font-size: 180px;
-  color: #E3B433;
+  color: orange;
   float: center;
   margin: 0 auto;
   width:100%;
@@ -13,7 +13,7 @@ button {
 	margin-top: 25px;
 	margin-left: 35px;
 	margin-right: 35px;
-	color: #E3B433;
+	color: orange;
 	background-color: #17408B;
 	font-size: 15px;
 	size: 40px;
@@ -24,7 +24,7 @@ button {
 	font-size: 30px;
 	margin: 0 auto;
 	text-align: center;
-	color:#E3B433;
+	color:orange;
 }
 
 .buttons {

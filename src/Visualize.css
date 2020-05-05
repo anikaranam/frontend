@@ -66,13 +66,12 @@ select {
 }
 
 .visualize {
-	margin-top: 20px;
+	margin-top: 40px;
 	background-color: orange;
 	font-size: 30px;
 	color: #17408B;
 	border-radius: 7px;
 	font-style: all;
-	height: 50px;
 }
 
 #chosenTeam {

@@ -1,25 +1,28 @@
 import React from 'react';
 import logo from './logo.svg';
 import './Stats.css';
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
+import Vis from './Vis';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 class Stats extends React.Component {
 	
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {teams: [], players: [], currentTeams: [], currentPlayers: [], chosenTeamStat: "", chosenPlayerStat: ""};
 		this.teamAdd = this.teamAdd.bind(this);
 		this.playerAdd = this.playerAdd.bind(this);
 		this.teamStatAdd = this.teamStatAdd.bind(this);
 		this.playerStatAdd = this.playerStatAdd.bind(this);
+		this.callVis = this.callVis.bind(this);
+
+		//alert(props.location.state.name);
 	}
 
 	componentDidMount() {
@@ -90,6 +93,19 @@ class Stats extends React.Component {
 		this.forceUpdate();
 	}
 
+	callVis(evt) {
+		alert(evt.target.id);
+		this.props.history.push({
+			pathname: "/visualize",
+			state: {
+				teams: this.state.currentTeams,
+				teamStat: this.state.chosenTeamStat,
+				players: this.state.currentPlayers,
+				playerStat: this.state.chosenPlayerStat,
+				option: evt.target.id
+			}
+		})
+	}
 
 	render() {
 
@@ -165,7 +181,7 @@ class Stats extends React.Component {
 			      		</div>
 
 			      		<div>
-			      			<button className="visualize">Visualize!</button>
+			      			<button id ="teamButton" className="visualize" onClick={this.callVis}>Visualize!</button>
 			      		</div>
 
 			      	</div>
@@ -202,7 +218,12 @@ class Stats extends React.Component {
 			      		</div>
 
 			      		<div>
-			      			<button className="visualize">Visualize!</button>
+			      			<Link to = {{
+			      				pathname: "/visualize",
+			      				state: {
+			      					name: "Ani"
+			      				}
+			      			}}><button id ="playerButton" onClick = {this.callVis} className="visualize">Visualize!</button></Link>
 			      		</div>
 
 			      	</div>

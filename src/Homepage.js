@@ -1,10 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './Homepage.css';
-import Stats from './Stats'
-import Draft from './Draft'
-import Query from './Query'
-import Crudpage from './Stats'
 
 import {
   BrowserRouter as Router,
@@ -40,7 +36,6 @@ class Homepage extends React.Component {
 
 	render() {
 		return (
-			<Router>
 			    <div className="main">
 			      <label className="title">NBAVISION</label>
 			      <div className="description">
@@ -53,22 +48,6 @@ class Homepage extends React.Component {
 				   </div>
 			      </div>      
 			    </div>
-
-			    <Switch>
-		          <Route path="/stats">
-		            <Stats />
-		          </Route>
-		          <Route path="/draft">
-		          	<Draft />
-		          </Route>
-		          <Route path="/demo">
-		            <Crudpage />
-		          </Route>
-		          <Route path="/query">
-		            <Query />
-		          </Route>
-		        </Switch>
-		    </Router>
 		  );
 	}
   
