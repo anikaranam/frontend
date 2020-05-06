@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './Stats.css';
 import Vis from './Vis';
+import './Draft.css';
 
 class Draft extends React.Component {
 	constructor() {
@@ -21,6 +22,7 @@ class Draft extends React.Component {
 
 					//alert(data1);
 					document.getElementById('display').innerHTML = data1.length;
+					alert(data1.length);
 					
 				})
 				.catch(error => {
@@ -34,8 +36,15 @@ class Draft extends React.Component {
 	render() {
 		return (
 			<div className="main">
+				<div>
+					<label>Eastern Conference : </label>
+				</div>
 				<button onClick = {this.getDraft}> show draft </button>
 				<label id='display'></label>
+
+				<div>
+					<label>Western Conference : </label>
+				</div>
 			</div>
 		);
 	}
