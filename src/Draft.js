@@ -46,7 +46,7 @@ class Draft extends React.Component {
 					<div><label id = "5"></label></div>
 				</div>
 
-				<div className="draftDiv">
+				<div className="images">
 					<img src={ require('./East.png') } />
 				</div>
 
@@ -60,7 +60,7 @@ class Draft extends React.Component {
 				</div>
 
 
-				<div className="draftDiv">
+				<div className="images">
 					<img src={ require('./West.png') } />
 				</div>
 
