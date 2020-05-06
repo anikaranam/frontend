@@ -20,7 +20,7 @@ class Draft extends React.Component {
 					alert(data1.length);
 
 					for (let i = 0; i < 10; i++) {
-						let player = data1[0];
+						let player = data1[i];
 						document.getElementById(i.toString()).innerHTML = "Best " + player.pos 
 						+ " is " + player.name + " with a Player Efficiency of " + player.pe;
 					}
