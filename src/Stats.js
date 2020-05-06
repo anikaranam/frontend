@@ -15,7 +15,7 @@ class Stats extends React.Component {
 	
 	constructor(props) {
 		super(props);
-		this.state = {teams: [], players: [], currentTeams: [], currentPlayers: [], chosenTeamStat: "", chosenPlayerStat: ""};
+		this.state = {teams: [], players: [], currentTeams: [], currentPlayers: [], chosenTeamStat: "Number of Wins", chosenPlayerStat: "Points Per Game"};
 		this.teamAdd = this.teamAdd.bind(this);
 		this.playerAdd = this.playerAdd.bind(this);
 		this.teamStatAdd = this.teamStatAdd.bind(this);
@@ -119,12 +119,10 @@ class Stats extends React.Component {
                 <option key={player}>{player}</option>
             );
 
-        let teamStats = ["Number of Wins", "Number of Losses", "Points Per Game", 
-        "Assists Per Game", "Rebounds Per Game", "Number of home wins", "Number of away wins", "Number of players from a state",
-         "Number of players from a college"];
+        let teamStats = ["Number of Wins", "Number of Losses", "Points Per Game", "Number of home wins", "Number of away wins"];
 
         let playerStats = ["Points Per Game", "Assists Per Game", "Rebounds Per Game", 
-        "Blocks per game", "Steals per game", "Number of games played", "Home state", "College", "Percentage of team’s points"];
+        "Blocks Per Game", "Steals Per Game", "Number of games played"];
 
         let teamsStatsOptions = teamStats.map((team) =>
                 <option key={team}>{team}</option>
@@ -218,12 +216,7 @@ class Stats extends React.Component {
 			      		</div>
 
 			      		<div>
-			      			<Link to = {{
-			      				pathname: "/visualize",
-			      				state: {
-			      					name: "Ani"
-			      				}
-			      			}}><button id ="playerButton" onClick = {this.callVis} className="visualize">Visualize!</button></Link>
+			      			<button id ="playerButton" onClick = {this.callVis} className="visualize">Visualize!</button>
 			      		</div>
 
 			      	</div>
