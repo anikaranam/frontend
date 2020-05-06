@@ -33,10 +33,11 @@ class Crudpage extends React.Component {
 	        method: 'GET',
 	        headers: { 'Content-Type': 'application/json' }
 	    };
-		fetch('http://localhost:3001/readCoachData?name=' + pName, requestOptions)
+		fetch('http://localhost:3001/readCoachRecord?coachName=' + pName, requestOptions)
 			.then(response => response.json())
 			.then(data => {
-				let result = "Name : " + data[0].CoachName + ", Career Wins : " + data[0].CareerWins + ", Career Losses : " + data[0].CareerLosses + ", Win Percentage : " + data[0].WInPercentage;
+				let result = "Name : " + data[0].CoachName + ", Career Wins : " + data[0].CareerWins + ", Career Losses : " + data[0].CareerLosses + ", Win Percentage : " + data[0].WInPercentage
+				 + ", Manages : " + data[0].Manages;
 				alert(result);
 			})
 			.catch(error => {
