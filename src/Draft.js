@@ -16,12 +16,12 @@ class Draft extends React.Component {
 				.then(data1 => {
 
 					//alert(data1);
-					document.getElementById('display').innerHTML = data1.length;
-					alert(data1.length);
+					// document.getElementById('display').innerHTML = data1.length;
+					// alert(data1.length);
 
 					for (let i = 0; i < 10; i++) {
 						let player = data1[i];
-						document.getElementById(i.toString()).innerHTML = "Best " + player.pos 
+						document.getElementById((i+1).toString()).innerHTML = "Best " + player.pos 
 						+ " is " + player.name + " with a Player Efficiency of " + player.pe;
 					}
 					
@@ -36,6 +36,9 @@ class Draft extends React.Component {
 	render() {
 		return (
 			<div className="main">
+				<img src={ require('./East.png') } />
+				<img src={ require('./West.png') } />
+
 				<div className="draftDiv">
 					<label>Eastern Conference : </label>
 					<div><label id = "1"></label></div>
