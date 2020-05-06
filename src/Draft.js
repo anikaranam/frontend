@@ -36,8 +36,6 @@ class Draft extends React.Component {
 	render() {
 		return (
 			<div className="main">
-				<img src={ require('./East.png') } />
-				<img src={ require('./West.png') } />
 
 				<div className="draftDiv">
 					<label>Eastern Conference : </label>
@@ -47,6 +45,11 @@ class Draft extends React.Component {
 					<div><label id = "4"></label></div>
 					<div><label id = "5"></label></div>
 				</div>
+
+				<div className="draftDiv">
+					<img src={ require('./East.png') } />
+				</div>
+
 				<div className="draftDiv">
 					<label>Western Conference : </label>
 					<div><label id = "6"></label></div>
@@ -55,6 +58,12 @@ class Draft extends React.Component {
 					<div><label id = "9"></label></div>
 					<div><label id = "10"></label></div>
 				</div>
+
+
+				<div className="draftDiv">
+					<img src={ require('./West.png') } />
+				</div>
+
 				<label id='display'></label>
 			</div>
 		);
