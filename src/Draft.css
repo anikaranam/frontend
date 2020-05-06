@@ -1,3 +1,9 @@
 label {
 	color: orange;
 }
+
+.draftDiv {
+	margin-left: 40px;
+	font-size: 30px;
+	margin-bottom: 40px;
+}

@@ -7,11 +7,6 @@ import './Draft.css';
 class Draft extends React.Component {
 	constructor() {
 		super();
-		this.getDraft = this.getDraft.bind(this);
-	}
-
-	getDraft() {
-		
 	}
 
 	componentDidMount() {
@@ -23,11 +18,16 @@ class Draft extends React.Component {
 					//alert(data1);
 					document.getElementById('display').innerHTML = data1.length;
 					alert(data1.length);
+
+					for (let i = 0; i < 10; i++) {
+						let player = data1[0];
+						document.getElementById(i.toString()).innerHTML = "Best " + player.pos 
+						+ " is " + player.name + " with a Player Efficiency of " + player.pe;
+					}
 					
 				})
 				.catch(error => {
-		            //alert(error);
-		            document.getElementById('display').innerHTML = "oops";
+		            alert(error);
 		        });
 
 
@@ -36,15 +36,23 @@ class Draft extends React.Component {
 	render() {
 		return (
 			<div className="main">
-				<div>
+				<div className="draftDiv">
 					<label>Eastern Conference : </label>
+					<div><label id = "1"></label></div>
+					<div><label id = "2"></label></div>
+					<div><label id = "3"></label></div>
+					<div><label id = "4"></label></div>
+					<div><label id = "5"></label></div>
 				</div>
-				<button onClick = {this.getDraft}> show draft </button>
-				<label id='display'></label>
-
-				<div>
+				<div className="draftDiv">
 					<label>Western Conference : </label>
+					<div><label id = "6"></label></div>
+					<div><label id = "7"></label></div>
+					<div><label id = "8"></label></div>
+					<div><label id = "9"></label></div>
+					<div><label id = "10"></label></div>
 				</div>
+				<label id='display'></label>
 			</div>
 		);
 	}
