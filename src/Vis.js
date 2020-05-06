@@ -20,10 +20,17 @@ import {Bar} from 'react-chartjs-2';
 class Vis extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {statVals: [], graph: {}, teams: this.props.location.state.teams};
-		this.showGraph = this.showGraph.bind(this);
-		//alert(props.location.state);
-		//alert(this.props.location.state.name);
+		this.state = {
+			statVals: [], 
+			graph: {},
+			teams: this.props.location.state.teams,
+			players: this.props.location.state.players,
+			teamStat: this.props.location.state.teamStat,
+			playerStat: this.props.location.state.playerStat,
+			option: this.props.location.state.option
+		};
+
+		//this.showGraph = this.showGraph.bind(this);
 	}
 
 	showGraph() {
@@ -41,46 +48,148 @@ class Vis extends React.Component {
 
 	componentDidMount() {
 		//alert(this.state.name);
-		alert(this.state.teams.length);
+		//alert(this.state.teams.length);
 
 		/*let teams = ["Boston Celtics", "Milwaukee Bucks", "Houston Rockets",
 		 "Golden State Warriors", "San Antonio Spurs", "Sacramento Kings", "Portland Trail Blazers",
 		 "Philadelphia 76ers", "Los Angeles Clippers", "Los Angeles Lakers"];*/
 
-		let teams = this.state.teams;
-		let endpoint = "/teamWins";
-		var winsArr = [];
+		 /*if (option == "teamButton") {
 
-		const requestOptions = {
-	        method: 'POST',
-	        headers: { 'Content-Type': 'application/json' },
-	        body: JSON.stringify({toCompare: teams})
-	    };
+		 	let teams = this.state.teams;
+			let stat = this.state.teamStat;
+			let endpoint = "";
 
-		fetch("http://localhost:3001/teamWins", requestOptions)
-			.then(response => response.json())
-			.then(data1 => {
+			 let teamStats = ["Number of Wins", "Number of Losses", "Points Per Game", 
+        "Assists Per Game", "Rebounds Per Game", "Number of home wins", "Number of away wins", "Number of players from a state",
+         "Number of players from a college"];
 
-				const data = {
-					  labels: teams,
-					  datasets: [
-					    {
-					      label: 'Comparing based on Wins',
-					      backgroundColor: 'orange',
-					      borderColor: 'orange',
-					      borderWidth: 1,
-					      hoverBackgroundColor: 'orange',
-					      hoverBorderColor: 'orange',
-					      data: data1
-					    }
-					  ]
-					};
-				this.setState({graph: data, statVals: data1});
-				this.forceUpdate();
-			})
-			.catch(error => {
-	            alert(error);
-	        });
+			if (stat == "Number of Wins") {
+
+			} else if (stat == "Number of Losses") {
+
+			} else if (stat == "Points Per Game") {
+				
+			} else if (stat == "Assists Per Game") {
+				
+			} else if (stat == "Rebounds Per Game") {
+				
+			} else if (stat == "Number of home wins") {
+				
+			} else if (stat == "Number of away wins") {
+				
+			} else if (stat == "Number of players from a state") {
+				
+			} else if (stat == "Number of players from a college") {
+				
+			} 
+
+
+			var winsArr = [];
+
+			const requestOptions = {
+		        method: 'POST',
+		        headers: { 'Content-Type': 'application/json' },
+		        body: JSON.stringify({toCompare: teams})
+		    };
+
+			fetch("http://localhost:3001/teamWins", requestOptions)
+				.then(response => response.json())
+				.then(data1 => {
+
+					const data = {
+						  labels: teams,
+						  datasets: [
+						    {
+						      label: 'Comparing based on Wins',
+						      backgroundColor: 'orange',
+						      borderColor: 'orange',
+						      borderWidth: 1,
+						      hoverBackgroundColor: 'orange',
+						      hoverBorderColor: 'orange',
+						      data: data1
+						    }
+						  ]
+						};
+					this.setState({graph: data, statVals: data1});
+					this.forceUpdate();
+				})
+				.catch(error => {
+		            alert(error);
+		        });
+
+
+
+		 } else if (option == "playerButton") {
+
+
+		 	let teams = this.state.teams;
+			let stat = this.state.teamStat;
+			let endpoint = "";
+
+			 let teamStats = ["Number of Wins", "Number of Losses", "Points Per Game", 
+        "Assists Per Game", "Rebounds Per Game", "Number of home wins", "Number of away wins", "Number of players from a state",
+         "Number of players from a college"];
+
+			if (stat == "Number of Wins") {
+
+			} else if (stat == "Number of Losses") {
+
+			} else if (stat == "Points Per Game") {
+				
+			} else if (stat == "Assists Per Game") {
+				
+			} else if (stat == "Rebounds Per Game") {
+				
+			} else if (stat == "Number of home wins") {
+				
+			} else if (stat == "Number of away wins") {
+				
+			} else if (stat == "Number of players from a state") {
+				
+			} else if (stat == "Number of players from a college") {
+				
+			} 
+
+
+			var winsArr = [];
+
+			const requestOptions = {
+		        method: 'POST',
+		        headers: { 'Content-Type': 'application/json' },
+		        body: JSON.stringify({toCompare: teams})
+		    };
+
+			fetch("http://localhost:3001/teamWins", requestOptions)
+				.then(response => response.json())
+				.then(data1 => {
+
+					const data = {
+						  labels: teams,
+						  datasets: [
+						    {
+						      label: 'Comparing based on Wins',
+						      backgroundColor: 'orange',
+						      borderColor: 'orange',
+						      borderWidth: 1,
+						      hoverBackgroundColor: 'orange',
+						      hoverBorderColor: 'orange',
+						      data: data1
+						    }
+						  ]
+						};
+					this.setState({graph: data, statVals: data1});
+					this.forceUpdate();
+				})
+				.catch(error => {
+		            alert(error);
+		        });
+
+
+
+		 }*/
+
+		
 	}
 
 	render() {

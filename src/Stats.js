@@ -94,7 +94,7 @@ class Stats extends React.Component {
 	}
 
 	callVis(evt) {
-		alert(evt.target.id);
+		//alert(evt.target.id);
 		this.props.history.push({
 			pathname: "/visualize",
 			state: {
